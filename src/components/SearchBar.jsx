@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import useCityData from "../hooks/useCityData";
 import colors from "../utils/colors";
+import { useNavigate } from "react-router-dom";
 
 export default function SearchBar() {
   const [search, setSearch] = useState("");
   const { cityResult, loading } = useCityData(search);
   const [selectedCity, setSelectedCity] = useState(null);
+  const navigate = useNavigate();
 
   const handleSearchChange = (e) => {
     const { value } = e.target;
@@ -21,7 +23,7 @@ export default function SearchBar() {
     // Do something with the selected city, like updating state
     console.log("Selected city:", selectedCity);
     setSelectedCity(selectedCity);
-    setSearch(`${selectedCity.name}, ${selectedCity.country}`);
+    navigate("/weather");
   };
   return (
     <div>
