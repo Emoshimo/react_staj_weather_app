@@ -5,6 +5,7 @@ import colors from "../utils/colors";
 export default function SearchBar() {
   const [search, setSearch] = useState("");
   const { cityResult, loading } = useCityData(search);
+  const [selectedCity, setSelectedCity] = useState(null);
 
   const handleSearchChange = (e) => {
     const { value } = e.target;
@@ -12,12 +13,15 @@ export default function SearchBar() {
     if (value === "") {
       // Clear cityResult when search input is empty
       setSearch("");
+      setSelectedCity(null);
     }
   };
 
   const handleCitySelect = (selectedCity) => {
     // Do something with the selected city, like updating state
     console.log("Selected city:", selectedCity);
+    setSelectedCity(selectedCity);
+    setSearch(`${selectedCity.name}, ${selectedCity.country}`);
   };
   return (
     <div>
@@ -27,13 +31,21 @@ export default function SearchBar() {
       >
         <input
           type="text"
-          className="search-input w-full lg:w-96 px-2 py-2 rounded bg-transparent focus:outline-none focus:text-gray-100 placeholder-gray-400 focus:placeholder-gray-400"
+          className="search-input w-full lg:w-96 px-2 py-2 rounded bg-transparent focus:outline-none text-gray-100 focus:text-gray-100 placeholder-gray-400 focus:placeholder-gray-400"
           placeholder="Search location"
           value={search}
           onChange={handleSearchChange}
         />
+        {loading && (
+          <div className="absolute top-1/2 right-4 transform -translate-y-1/2">
+            {/* Loading spinner */}
+            <div className="spinner-border text-white" role="status">
+              <span className="sr-only">Loading...</span>
+            </div>
+          </div>
+        )}
       </div>
-      {cityResult && search.length > 0 && (
+      {cityResult && !selectedCity && search.length > 0 && (
         <div
           className="search-results mt-2 rounded-lg"
           style={{ backgroundColor: colors.searchResultBg }}
