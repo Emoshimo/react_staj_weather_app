@@ -19,12 +19,14 @@ export default function SearchBar() {
     }
   };
 
-  const handleCitySelect = (selectedCity) => {
+  const handleCitySelect = async (selectedCity) => {
     // Do something with the selected city, like updating state
-    console.log("Selected city:", selectedCity);
     setSelectedCity(selectedCity);
-    navigate("/weather");
+    setSearch(`${selectedCity.name}, ${selectedCity.country}`);
+
+    navigate(`/weather/${selectedCity.name}`, { state: { selectedCity } });
   };
+
   return (
     <div>
       <div

@@ -21,7 +21,7 @@ export default function MainPage() {
             backgroundImage: `url(${backgroundImage})`,
             height: "100vh",
             flex: 1,
-          }} // Adjust height as needed
+          }}
         >
           <Header />
           <div className="flex-grow flex justify-center items-center flex-col space-y-4 pb-32">
