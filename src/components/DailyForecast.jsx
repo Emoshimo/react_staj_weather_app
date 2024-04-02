@@ -1,5 +1,5 @@
 import React from "react";
-import icon from "../utils/logos/Weather=Clear, Moment=Day.png";
+import icon from "../utils/logos/clear,day.png";
 export default function DailyForecast({ day, iconPath, highTemp, lowTemp }) {
   return (
     <div className="flex flex-col items-center">

@@ -1,11 +1,12 @@
 import React from "react";
 import useCurrentDate from "../hooks/useCurrentDate";
-import backgroundImage from "../utils/backgrounds/test3_bg.png";
-import icon from "../utils/logos/Weather=Few clouds, Moment=Day.png";
-import colors from "../utils/colors";
+import backgroundImage from "../utils/backgrounds/clear,day.png";
+import icon from "../utils/logos/clear,day.png";
+
 export default function WeatherHeader({ city, values }) {
   const { weekday, month, dayOfMonth, year, time } = useCurrentDate();
-  const timeOfDay = time === "morning" ? 
+  const timeOfDay = time === "morning" ? "day" : "night";
+
   return (
     <div class="mt-2 flex justify-center items-start">
       <div
