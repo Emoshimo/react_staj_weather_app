@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-
-const LocationFinder = () => {
-  const [location, setLocation] = useState(null);
+const LocationFinder = ({ onSelect }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -33,7 +31,7 @@ const LocationFinder = () => {
       .then((data) => {
         const city = data.city;
         const countryCode = data.countryCode;
-        setLocation({ city, countryCode });
+        onSelect(city, countryCode); // Pass city and country code to parent component
         setLoading(false);
       })
       .catch((error) => {
@@ -48,11 +46,6 @@ const LocationFinder = () => {
         {loading ? "Fetching Location..." : "Get Location"}
       </button>
       {error && <div>{error}</div>}
-      {location && (
-        <div>
-          City: {location.city}, Country Code: {location.countryCode}
-        </div>
-      )}
     </div>
   );
 };

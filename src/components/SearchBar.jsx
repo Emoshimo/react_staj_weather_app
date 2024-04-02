@@ -33,8 +33,6 @@ export default function SearchBar() {
 
   return (
     <div>
-      <LocationFinder onSelect={handleLocationSelect} />
-
       <div
         className="search-container px-4 py-2 rounded-lg mt-4 mx-4"
         style={{ backgroundColor: colors.searchBarBg }}
@@ -46,6 +44,8 @@ export default function SearchBar() {
           value={search}
           onChange={handleSearchChange}
         />
+        <LocationFinder onSelect={handleLocationSelect} />
+
         {loading && (
           <div className="absolute top-1/2 right-4 transform -translate-y-1/2">
             {/* Loading spinner */}
