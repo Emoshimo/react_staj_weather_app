@@ -5,7 +5,10 @@ import colors from "../utils/colors";
 const weeklyData = [
   // Replace with your actual data and icons
   { day: "Mon", iconPath: "path_to_icon", highTemp: "32°C", lowTemp: "26°C" },
-  // ... other days
+  { day: "Tue", iconPath: "path_to_icon", highTemp: "32°C", lowTemp: "26°C" },
+  { day: "Wed", iconPath: "path_to_icon", highTemp: "32°C", lowTemp: "26°C" },
+  { day: "Thur", iconPath: "path_to_icon", highTemp: "32°C", lowTemp: "26°C" },
+  { day: "Fri", iconPath: "path_to_icon", highTemp: "32°C", lowTemp: "26°C" },
 ];
 
 export default function WeeklyForecast() {

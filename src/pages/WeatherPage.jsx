@@ -57,7 +57,7 @@ export default function WeatherPage() {
     <div
       className="mt-0 my-0 flex flex-col justify-start"
       style={{
-        height: "100vh",
+        height: "100%",
         overflow: "hidden",
         backgroundColor: colors.background,
       }}
