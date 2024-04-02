@@ -2,7 +2,6 @@ import React from "react";
 import WeatherRow from "./WeatherRow";
 import colors from "../utils/colors";
 import temp_icon from "../utils/icons/temp.png";
-import rain_icon from "../utils/icons/rain.png";
 import wind_icon from "../utils/icons/wind.png";
 import humidity_icon from "../utils/icons/humidity.png";
 
