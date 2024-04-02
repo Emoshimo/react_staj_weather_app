@@ -77,9 +77,9 @@ export default function WeatherPage() {
       }}
     >
       <div
-        className="flex flex-col lg:grid lg:grid-cols-3 lg:gap-4"
+        className="flex flex-col lg:grid lg:grid-cols-3 lg:gap-4 items-start"
         style={{
-          height: "100vh",
+          minHeight: "100vh",
           overflow: "hidden",
           backgroundColor: colors.background,
         }}

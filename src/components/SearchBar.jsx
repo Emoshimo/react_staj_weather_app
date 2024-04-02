@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import useCityData from "../hooks/useCityData";
 import colors from "../utils/colors";
 import { useNavigate } from "react-router-dom";
+import LocationFinder from "./LocationFinder";
 
 export default function SearchBar() {
   const [search, setSearch] = useState("");
@@ -13,22 +14,27 @@ export default function SearchBar() {
     const { value } = e.target;
     setSearch(value);
     if (value === "") {
-      // Clear cityResult when search input is empty
       setSearch("");
       setSelectedCity(null);
     }
   };
 
   const handleCitySelect = async (selectedCity) => {
-    // Do something with the selected city, like updating state
     setSelectedCity(selectedCity);
     setSearch(`${selectedCity.name}, ${selectedCity.country}`);
 
     navigate(`/weather/${selectedCity.name}`, { state: { selectedCity } });
   };
 
+  // Update search input value when city and country code are available
+  const handleLocationSelect = (city, countryCode) => {
+    setSearch(`${city}, ${countryCode}`);
+  };
+
   return (
     <div>
+      <LocationFinder onSelect={handleLocationSelect} />
+
       <div
         className="search-container px-4 py-2 rounded-lg mt-4 mx-4"
         style={{ backgroundColor: colors.searchBarBg }}

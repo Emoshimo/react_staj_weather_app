@@ -32,7 +32,6 @@ export default function WeatherHeader({ city, values }) {
         style={{
           backgroundImage: `url(${backgroundPath})`,
           backgroundRepeat: "no-repeat",
-          height: "40vh",
         }}
       >
         <div class="flex justify-between items-center mb-1">
