@@ -35,6 +35,8 @@ export default function useCurrentDate() {
 
   const dayOfMonth = currentDate.getDate(); // Get day of the month
   const year = currentDate.getFullYear(); // Get current year
+  const hour = currentDate.getHours();
+  const timeOfDay = hour >= 6 && hour < 18 ? "morning" : "night";
 
-  return { weekday, month, dayOfMonth, year };
+  return { weekday, month, dayOfMonth, year, timeOfDay };
 }

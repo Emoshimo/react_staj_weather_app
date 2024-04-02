@@ -4,8 +4,8 @@ import backgroundImage from "../utils/backgrounds/test3_bg.png";
 import icon from "../utils/logos/Weather=Few clouds, Moment=Day.png";
 import colors from "../utils/colors";
 export default function WeatherHeader({ city, values }) {
-  const { weekday, month, dayOfMonth, year } = useCurrentDate();
-  console.log(values);
+  const { weekday, month, dayOfMonth, year, time } = useCurrentDate();
+  const timeOfDay = time === "morning" ? 
   return (
     <div class="mt-2 flex justify-center items-start">
       <div
@@ -33,7 +33,10 @@ export default function WeatherHeader({ city, values }) {
             <p class="text-sm">
               {values.temp_min}°C / {values.temp_max}°C
             </p>
-            <p>{values.description}</p>
+            <p>
+              {values.description.charAt(0).toUpperCase() +
+                values.description.slice(1)}
+            </p>
           </div>
           <div class="rounded-full">
             <img src={icon} alt="Icon" class="w-56 h-56" />
