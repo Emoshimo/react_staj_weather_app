@@ -3,6 +3,8 @@ import { useLocation } from "react-router-dom";
 import axios from "axios";
 import colors from "../utils/colors";
 import WeatherHeader from "../components/WeatherHeader";
+import WeatherRow from "../components/WeatherRow";
+import WeatherDetail from "../components/WeatherDetail";
 
 export default function WeatherPage() {
   const location = useLocation();
@@ -35,14 +37,17 @@ export default function WeatherPage() {
 
   return (
     <div
-      className="mt-0 my-0"
+      className="mt-0 my-0 flex flex-col justify-start"
       style={{
         height: "100vh",
         overflow: "hidden",
         backgroundColor: colors.background,
       }}
     >
-      <WeatherHeader city={name} />
+      <div>
+        <WeatherHeader city={name} />
+        <WeatherDetail />
+      </div>
     </div>
   );
 }

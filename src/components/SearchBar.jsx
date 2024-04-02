@@ -54,7 +54,6 @@ export default function SearchBar() {
           className="search-results mt-2 rounded-lg"
           style={{ backgroundColor: colors.searchResultBg }}
         >
-          {/* Render selectable rows for each city in cityResult */}
           {cityResult.map((city, index) => (
             <div
               key={city.id}

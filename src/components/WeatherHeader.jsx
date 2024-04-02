@@ -6,9 +6,9 @@ export default function WeatherHeader(city, degree, description) {
   const { weekday, month, dayOfMonth, year } = useCurrentDate();
 
   return (
-    <div class=" mt-2 flex justify-center items-start h-screen">
+    <div class="mt-2 flex justify-center items-start">
       <div
-        class="bg-cover bg-center text-white p-4 rounded-lg shadow-lg w-3/4 max-w-xl mx-auto"
+        class="bg-cover bg-center text-white p-4 rounded-lg shadow-lg w-5/6 max-w-xl mx-auto"
         style={{
           backgroundImage: `url(${backgroundImage})`,
           backgroundRepeat: "no-repeat",
