@@ -4,7 +4,7 @@ import axios from "axios";
 import colors from "../utils/colors";
 import WeatherHeader from "../components/WeatherHeader";
 import WeatherDetail from "../components/WeatherDetail";
-import DailyForecast from "../components/DailyForecast";
+import SearchBar from "../components/SearchBar";
 import WeeklyForecast from "../components/WeeklyForecast";
 
 export default function WeatherPage() {
@@ -63,6 +63,7 @@ export default function WeatherPage() {
       }}
     >
       <div className="flex flex-col space-y-4">
+        <SearchBar />
         <WeatherHeader city={selectedCity} values={headerValues} />
         <WeatherDetail values={dailyWeatherValues} />
         <WeeklyForecast />

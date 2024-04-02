@@ -30,7 +30,7 @@ export default function SearchBar() {
   return (
     <div>
       <div
-        className="search-container px-4 py-2 rounded-lg"
+        className="search-container px-4 py-2 rounded-lg mt-4 mx-4"
         style={{ backgroundColor: colors.searchBarBg }}
       >
         <input

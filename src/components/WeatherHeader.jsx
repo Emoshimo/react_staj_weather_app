@@ -1,18 +1,36 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import useCurrentDate from "../hooks/useCurrentDate";
-import backgroundImage from "../utils/backgrounds/clear,day.png";
-import icon from "../utils/logos/clear,day.png";
-
+import bg from "../utils/backgrounds/clearsky,day.png";
 export default function WeatherHeader({ city, values }) {
   const { weekday, month, dayOfMonth, year, time } = useCurrentDate();
+  const [backgroundPath, setBackgroundPath] = useState(bg);
   const timeOfDay = time === "morning" ? "day" : "night";
+  const iconMap = {
+    "clear sky": "clearsky",
+    "few clouds": "fewclouds",
+    "scattered clouds": "clouds",
+    "broken clouds": "clouds",
+    "shower rain": "rain",
+    rain: "rain",
+    thunderstorm: "storm",
+    snow: "snow",
+    mist: "clouds",
+  };
+  const icon = iconMap[values.description.toLowerCase()] || "clouds";
+
+  const icon_path = icon + "," + timeOfDay + ".png";
+
+  useEffect(() => {
+    const backgroundPath = require(`../utils/backgrounds/${icon},${timeOfDay}.png`);
+    setBackgroundPath(backgroundPath);
+  }, [timeOfDay, icon]);
 
   return (
     <div class="mt-2 flex justify-center items-start">
       <div
         class="bg-cover bg-center text-white p-4 rounded-lg shadow-lg w-5/6 max-w-xl mx-auto"
         style={{
-          backgroundImage: `url(${backgroundImage})`,
+          backgroundImage: `url(${backgroundPath})`,
           backgroundRepeat: "no-repeat",
           height: "40vh",
         }}
@@ -40,7 +58,11 @@ export default function WeatherHeader({ city, values }) {
             </p>
           </div>
           <div class="rounded-full">
-            <img src={icon} alt="Icon" class="w-56 h-56" />
+            <img
+              src={require(`../utils/logos/${icon_path}`)}
+              alt="Icon"
+              class="w-56 h-56"
+            />
           </div>
         </div>
       </div>
