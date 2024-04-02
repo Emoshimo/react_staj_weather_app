@@ -7,6 +7,7 @@ const colors = {
   searchBarBg: "#1C1C27",
   searchResultBg: "#3B3B54",
   borderColor: "#1E1E29",
+  rowBackground: "#16161F",
 };
 
 export default colors;

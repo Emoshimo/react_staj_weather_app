@@ -2,6 +2,7 @@ import React from "react";
 import useCurrentDate from "../hooks/useCurrentDate";
 import backgroundImage from "../utils/backgrounds/test3_bg.png";
 import icon from "../utils/logos/Weather=Few clouds, Moment=Day.png";
+import colors from "../utils/colors";
 export default function WeatherHeader(city, degree, description) {
   const { weekday, month, dayOfMonth, year } = useCurrentDate();
 

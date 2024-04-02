@@ -44,7 +44,7 @@ export default function WeatherPage() {
         backgroundColor: colors.background,
       }}
     >
-      <div>
+      <div className="flex flex-col space-y-4">
         <WeatherHeader city={name} />
         <WeatherDetail />
       </div>

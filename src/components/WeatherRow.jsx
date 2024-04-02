@@ -1,12 +1,15 @@
 import React from "react";
 import colors from "../utils/colors";
-export default function WeatherRow() {
+export default function WeatherRow({ iconPath, label, value }) {
   return (
-    <div
-      className="mt-2 rounded-lg bg-gray-700 p-4 w-5/6 max-w-xl mx-auto"
-      style={{ backgroundColor: colors.searchBarBg }}
-    >
-      <p className="text-white">Hello</p>
+    <div className="flex items-center justify-between p-4 border-b border-gray-800">
+      <div className="flex items-center">
+        <img src={iconPath} alt={`${label} icon`} className="w-6 h-6 mr-4" />
+        <span className="text-lg" style={{ color: colors.text }}>
+          {label}
+        </span>
+      </div>
+      <span className="text-lg text-white">{value}</span>
     </div>
   );
 }
