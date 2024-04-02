@@ -14,24 +14,28 @@ export default function WeatherPage() {
   const [weatherData, setWeatherData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [dailyWeatherValues, setDailyWeatherValues] = useState([]);
+  const [weeklyWeather, setWeeklyWeather] = useState({
+    temp: 0,
+    temp_max: 0,
+    temp_min: 0,
+    description: "",
+  });
   const [headerValues, setHeaderValues] = useState({
     temp: 0,
     temp_max: 0,
     temp_min: 0,
     description: "",
   });
-  const [dailyWeatherValues, setDailyWeatherValues] = useState([]);
   const apiKey = "a6105d7b44e05a8f176b5c8ecb438776";
 
   useEffect(() => {
-    console.log(selectedCity);
     const fetchWeatherData = async () => {
       setLoading(true);
       try {
         const response = await axios.get(
           `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&cnt=5&units=metric&appid=${apiKey}`
         );
-        console.log(response.data);
         setWeatherData(response.data);
         const {
           main: { feels_like, humidity },
@@ -43,6 +47,15 @@ export default function WeatherPage() {
         } = response.data.list[0];
         const description = response.data.list[0].weather[0].main;
         setHeaderValues({ temp, temp_max, temp_min, description });
+        const weeklyData = response.data.list.slice(0, 5).map((item) => {
+          return {
+            temp: parseInt(item.main.temp),
+            temp_max: parseInt(item.main.temp_max),
+            temp_min: parseInt(item.main.temp_min),
+            description: item.weather[0].main,
+          };
+        });
+        setWeeklyWeather(weeklyData);
         setLoading(false);
       } catch (error) {
         setError(error);
@@ -66,7 +79,7 @@ export default function WeatherPage() {
         <SearchBar />
         <WeatherHeader city={selectedCity} values={headerValues} />
         <WeatherDetail values={dailyWeatherValues} />
-        <WeeklyForecast />
+        <WeeklyForecast values={weeklyWeather} />
       </div>
     </div>
   );

@@ -1,12 +1,19 @@
 import React from "react";
-import icon from "../utils/logos/clearsky,day.png";
 export default function DailyForecast({ day, iconPath, highTemp, lowTemp }) {
+  if (!iconPath) {
+    console.log(iconPath);
+    return null;
+  }
   return (
     <div className="flex flex-col items-center">
       <p className="text-sm text-gray-200">{day}</p>
-      <img src={icon} alt={`${day} forecast`} className="h-32" />
-      <p className="text-lg text-white">{highTemp}</p>
-      <p className="text-sm text-white opacity-70">{lowTemp}</p>
+      <img
+        src={require(`../utils/logos/${iconPath}`)}
+        alt="Icon"
+        className="h-32"
+      />
+      <p className="text-lg text-white">{highTemp}°C</p>
+      <p className="text-sm text-white opacity-70">{lowTemp}°C</p>
     </div>
   );
 }
