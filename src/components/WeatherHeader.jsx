@@ -3,9 +3,9 @@ import useCurrentDate from "../hooks/useCurrentDate";
 import backgroundImage from "../utils/backgrounds/test3_bg.png";
 import icon from "../utils/logos/Weather=Few clouds, Moment=Day.png";
 import colors from "../utils/colors";
-export default function WeatherHeader(city, degree, description) {
+export default function WeatherHeader({ city, values }) {
   const { weekday, month, dayOfMonth, year } = useCurrentDate();
-
+  console.log(values);
   return (
     <div class="mt-2 flex justify-center items-start">
       <div
@@ -19,7 +19,7 @@ export default function WeatherHeader(city, degree, description) {
         <div class="flex justify-between items-center mb-1">
           <div>
             <p class="text-lg font-semibold">
-              {city.city}, {city.country}
+              {city.name}, {city.country}
             </p>
             <p class="text-sm">
               {weekday}, {month} {dayOfMonth}, {year}
@@ -29,9 +29,11 @@ export default function WeatherHeader(city, degree, description) {
 
         <div class="flex justify-between items-center">
           <div>
-            <p class="text-5xl">28°C</p>
-            <p class="text-sm">26° / 32°</p>
-            <p>Few clouds</p>
+            <p class="text-5xl">{parseInt(values.temp)}°C</p>
+            <p class="text-sm">
+              {values.temp_min}°C / {values.temp_max}°C
+            </p>
+            <p>{values.description}</p>
           </div>
           <div class="rounded-full">
             <img src={icon} alt="Icon" class="w-56 h-56" />
