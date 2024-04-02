@@ -10,7 +10,7 @@ export default function DailyForecast({ day, iconPath, highTemp, lowTemp }) {
       <img
         src={require(`../utils/logos/${iconPath}`)}
         alt="Icon"
-        className="h-32"
+        className="h-24"
       />
       <p className="text-lg text-white">{highTemp}°C</p>
       <p className="text-sm text-white opacity-70">{lowTemp}°C</p>

@@ -4,6 +4,7 @@ import axios from "axios";
 import colors from "../utils/colors";
 import WeatherHeader from "../components/WeatherHeader";
 import WeatherDetail from "../components/WeatherDetail";
+import Header from "../components/Header";
 import SearchBar from "../components/SearchBar";
 import WeeklyForecast from "../components/WeeklyForecast";
 
@@ -75,10 +76,21 @@ export default function WeatherPage() {
         backgroundColor: colors.background,
       }}
     >
-      <div className="flex flex-col space-y-4">
-        <SearchBar />
-        <WeatherHeader city={selectedCity} values={headerValues} />
+      <div
+        className="flex flex-col lg:grid lg:grid-cols-3 lg:gap-4"
+        style={{
+          height: "100vh",
+          overflow: "hidden",
+          backgroundColor: colors.background,
+        }}
+      >
+        <div className="col-span-3">
+          <Header />
+          <SearchBar />
+        </div>
         <WeatherDetail values={dailyWeatherValues} />
+        <WeatherHeader city={selectedCity} values={headerValues} />
+
         <WeeklyForecast values={weeklyWeather} />
       </div>
     </div>

@@ -4,6 +4,7 @@ import SearchBar from "../components/SearchBar";
 import Welcome from "../components/Welcome";
 import backgroundImage from "../utils/backgrounds/search_background.png";
 import colors from "../utils/colors";
+import LocationFinder from "../components/LocationFinder";
 export default function MainPage() {
   return (
     <div
@@ -27,6 +28,7 @@ export default function MainPage() {
           <div className="flex-grow flex justify-center items-center flex-col space-y-4 pb-32">
             <Welcome />
             <SearchBar />
+            <LocationFinder />
           </div>
         </div>
       </div>

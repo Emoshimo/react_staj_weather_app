@@ -35,7 +35,7 @@ export default function SearchBar() {
       >
         <input
           type="text"
-          className="search-input w-full lg:w-96 px-2 py-2 rounded bg-transparent focus:outline-none text-gray-100 focus:text-gray-100 placeholder-gray-400 focus:placeholder-gray-400"
+          className="search-input lg:w-96 px-2 py-2 rounded bg-transparent focus:outline-none text-gray-100 focus:text-gray-100 placeholder-gray-400 focus:placeholder-gray-400"
           placeholder="Search location"
           value={search}
           onChange={handleSearchChange}
