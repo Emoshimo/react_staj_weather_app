@@ -7,6 +7,7 @@ import WeatherDetail from "../components/WeatherDetail";
 import Header from "../components/Header";
 import SearchBar from "../components/SearchBar";
 import WeeklyForecast from "../components/WeeklyForecast";
+import TempChart from "../components/TempChart";
 
 export default function WeatherPage() {
   const location = useLocation();
@@ -28,6 +29,7 @@ export default function WeatherPage() {
     temp_min: 0,
     description: "",
   });
+  const [tempChangeData, setTempChangeData] = useState();
   const apiKey = "a6105d7b44e05a8f176b5c8ecb438776";
 
   useEffect(() => {
@@ -35,9 +37,11 @@ export default function WeatherPage() {
       setLoading(true);
       try {
         const response = await axios.get(
-          `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&cnt=5&units=metric&appid=${apiKey}`
+          `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`
         );
         setWeatherData(response.data);
+        const { list } = response.data;
+
         const {
           main: { feels_like, humidity },
           wind: { speed },
@@ -48,14 +52,30 @@ export default function WeatherPage() {
         } = response.data.list[0];
         const description = response.data.list[0].weather[0].main;
         setHeaderValues({ temp, temp_max, temp_min, description });
-        const weeklyData = response.data.list.slice(0, 5).map((item) => {
+        const indices = [0, 7, 14, 21, 35];
+
+        const weeklyData = indices.map((index) => {
           return {
-            temp: parseInt(item.main.temp),
-            temp_max: parseInt(item.main.temp_max),
-            temp_min: parseInt(item.main.temp_min),
-            description: item.weather[0].main,
+            temp: parseInt(list[index].main.temp),
+            temp_max: parseInt(list[index].main.temp_max),
+            temp_min: parseInt(list[index].main.temp_min),
+            description: list[index].weather[0].main,
           };
         });
+        console.log(weeklyData);
+
+        const formattedData = indices.map((index) => {
+          const item = list[index];
+          const date = new Date(item.dt_txt);
+          const day = date.getDate();
+          const month = date.getMonth() + 1; // Months are zero-indexed, so add 1
+
+          return {
+            temperature: item.main.temp,
+            date: `${day}/${month}`,
+          };
+        });
+        setTempChangeData(formattedData);
         setWeeklyWeather(weeklyData);
         setLoading(false);
       } catch (error) {
@@ -100,6 +120,7 @@ export default function WeatherPage() {
           </div>
         </div>
       </div>
+      <TempChart data={tempChangeData} />
     </div>
   );
 }
