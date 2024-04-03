@@ -1,6 +1,7 @@
 import React from "react";
 import colors from "../utils/colors";
 export default function WeatherRow({ iconPath, label, value }) {
+  console.log(label);
   return (
     <div className="flex items-center justify-between p-4 border-b border-gray-800">
       <div className="flex items-center">
@@ -10,7 +11,8 @@ export default function WeatherRow({ iconPath, label, value }) {
         </span>
       </div>
       <span className="text-lg text-white">
-        {value} {label === "Wind speed" && " Km/h"}
+        {value}
+        {label === "Wind speed" && " Km/h"}
         {label === "Thermal sensation" && " °C"}
         {label === "Air humidity" && " %"}
       </span>
