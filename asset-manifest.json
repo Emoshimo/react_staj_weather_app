@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/react_staj_weather_app/static/css/main.a73ac7ee.css",
-    "main.js": "/react_staj_weather_app/static/js/main.bc8771b3.js",
+    "main.js": "/react_staj_weather_app/static/js/main.9347f118.js",
     "static/media/fewclouds,day.png": "/react_staj_weather_app/static/media/fewclouds,day.fa511deec3f19928e46a.png",
     "static/media/clouds,day.png": "/react_staj_weather_app/static/media/clouds,day.6bf2044587498d52b522.png",
     "static/media/clearsky,day.png": "/react_staj_weather_app/static/media/clearsky,day.96402dedd6f7ec20fc92.png",
@@ -17,10 +17,10 @@
     "static/media/snow,night.png": "/react_staj_weather_app/static/media/snow,night.a8236cc06b215d3eb1a5.png",
     "index.html": "/react_staj_weather_app/index.html",
     "main.a73ac7ee.css.map": "/react_staj_weather_app/static/css/main.a73ac7ee.css.map",
-    "main.bc8771b3.js.map": "/react_staj_weather_app/static/js/main.bc8771b3.js.map"
+    "main.9347f118.js.map": "/react_staj_weather_app/static/js/main.9347f118.js.map"
   },
   "entrypoints": [
     "static/css/main.a73ac7ee.css",
-    "static/js/main.bc8771b3.js"
+    "static/js/main.9347f118.js"
   ]
 }
