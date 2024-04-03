@@ -62,7 +62,6 @@ export default function WeatherPage() {
             description: list[index].weather[0].main,
           };
         });
-        console.log(weeklyData);
 
         const formattedData = indices.map((index) => {
           const item = list[index];
@@ -71,11 +70,13 @@ export default function WeatherPage() {
           const month = date.getMonth() + 1; // Months are zero-indexed, so add 1
 
           return {
-            temperature: item.main.temp,
+            temperature: parseInt(item.main.temp),
             date: `${day}/${month}`,
           };
         });
         setTempChangeData(formattedData);
+        console.log(formattedData);
+
         setWeeklyWeather(weeklyData);
         setLoading(false);
       } catch (error) {
@@ -108,19 +109,29 @@ export default function WeatherPage() {
           <Header />
           <SearchBar />
         </div>
-        <div className="grid grid-cols-1 gap-4 mt-16 items-start lg:grid-cols-3">
-          <div className="lg:col-span-1">
-            <WeatherDetail values={dailyWeatherValues} />
-          </div>
+        <div className="grid grid-cols-1 gap-4 mt-16 items-center lg:grid-cols-3">
           <div className="lg:col-span-1">
             <WeatherHeader city={selectedCity} values={headerValues} />
+          </div>
+          <div className="lg:col-span-1">
+            <WeatherDetail values={dailyWeatherValues} />
           </div>
           <div className="lg:col-span-1">
             <WeeklyForecast values={weeklyWeather} />
           </div>
         </div>
+        <div className="grid grid-cols-1 gap-1 mt-4 w-full lg:grid-cols-3">
+          <div className="lg:col-span-1">
+            <TempChart data={tempChangeData} label={"Temperature"} />
+          </div>
+          <div className="lg:col-span-1">
+            <TempChart data={tempChangeData} />
+          </div>
+          <div className="lg:col-span-1">
+            <TempChart data={tempChangeData} />
+          </div>
+        </div>
       </div>
-      <TempChart data={tempChangeData} />
     </div>
   );
 }

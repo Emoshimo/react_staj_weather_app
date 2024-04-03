@@ -8,6 +8,7 @@ const colors = {
   searchResultBg: "#3B3B54",
   borderColor: "#1E1E29",
   rowBackground: "#16161F",
+  chartColor: "#7591C9",
 };
 
 export default colors;
