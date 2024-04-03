@@ -7,7 +7,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/react_staj_weather_app" element={<MainPage />} />
+        <Route path="/" element={<MainPage />} />
         <Route path={`weather/:city`} element={<WeatherPage />} />
       </Routes>
     </BrowserRouter>
