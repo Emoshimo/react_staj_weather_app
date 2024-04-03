@@ -1,10 +1,6 @@
-import React from "react";
-
-// Custom hook to get current date information
 export default function useCurrentDate() {
   const currentDate = new Date();
 
-  // Array of weekday names
   const weekdays = [
     "Sunday",
     "Monday",
@@ -14,9 +10,7 @@ export default function useCurrentDate() {
     "Friday",
     "Saturday",
   ];
-  const weekday = weekdays[currentDate.getDay()]; // Get current weekday
-
-  // Array of month names
+  const weekday = weekdays[currentDate.getDay()];
   const months = [
     "January",
     "February",
@@ -36,7 +30,6 @@ export default function useCurrentDate() {
   const dayOfMonth = currentDate.getDate(); // Get day of the month
   const year = currentDate.getFullYear(); // Get current year
   const hour = currentDate.getHours();
-  const timeOfDay = hour >= 6 && hour < 18 ? "morning" : "night";
-
+  const timeOfDay = hour >= 6 && hour < 18 ? "day" : "night";
   return { weekday, month, dayOfMonth, year, timeOfDay };
 }

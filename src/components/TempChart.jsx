@@ -22,7 +22,6 @@ ChartJS.register(
 );
 
 const TempChart = ({ data, label }) => {
-  console.log(data);
   if (!data) {
     return null;
   }

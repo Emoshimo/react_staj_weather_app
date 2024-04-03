@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import useCurrentDate from "../hooks/useCurrentDate";
-import bg from "../utils/backgrounds/clearsky,day.png";
 export default function WeatherHeader({ city, values }) {
-  const { weekday, month, dayOfMonth, year, time } = useCurrentDate();
-  const [backgroundPath, setBackgroundPath] = useState(bg);
-  const timeOfDay = time === "morning" ? "day" : "night";
+  const { weekday, month, dayOfMonth, year, timeOfDay } = useCurrentDate();
+  const [backgroundPath, setBackgroundPath] = useState("");
+  console.log(timeOfDay);
   const iconMap = {
     "clear sky": "clearsky",
     "few clouds": "fewclouds",
@@ -45,7 +44,7 @@ export default function WeatherHeader({ city, values }) {
           </div>
         </div>
 
-        <div class="flex justify-between items-center">
+        <div class="flex justify-between items-end">
           <div>
             <p class="text-5xl">{parseInt(values.temp)}°C</p>
             <p class="text-sm">
@@ -60,7 +59,7 @@ export default function WeatherHeader({ city, values }) {
             <img
               src={require(`../utils/logos/${icon_path}`)}
               alt="Icon"
-              class="w-56 h-56"
+              class="w-48 h-48"
             />
           </div>
         </div>

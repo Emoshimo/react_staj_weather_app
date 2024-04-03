@@ -28,6 +28,8 @@ export default function WeatherPage() {
     temp_max: 0,
     temp_min: 0,
     description: "",
+    lat: 0,
+    lon: 0,
   });
   const [tempChangeData, setTempChangeData] = useState();
   const [humidityChangeData, setHumidityChangeData] = useState();
@@ -53,7 +55,7 @@ export default function WeatherPage() {
           main: { temp, temp_max, temp_min },
         } = response.data.list[0];
         const description = response.data.list[0].weather[0].main;
-        setHeaderValues({ temp, temp_max, temp_min, description });
+        setHeaderValues({ temp, temp_max, temp_min, description, lat, lon });
         const indices = [0, 7, 14, 21, 35];
 
         const weeklyData = indices.map((index) => {
@@ -132,15 +134,12 @@ export default function WeatherPage() {
             <WeeklyForecast values={weeklyWeather} />
           </div>
         </div>
-        <div className="grid grid-cols-1 gap-1 mt-4 w-full lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-24 mt-4 w-3/4 lg:grid-cols-2">
           <div className="lg:col-span-1">
             <TempChart data={tempChangeData} label={"Temperature"} />
           </div>
           <div className="lg:col-span-1">
             <TempChart data={humidityChangeData} label={"Humidity"} />
-          </div>
-          <div className="lg:col-span-1">
-            <TempChart data={tempChangeData} />
           </div>
         </div>
       </div>
