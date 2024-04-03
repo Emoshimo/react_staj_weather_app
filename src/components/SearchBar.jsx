@@ -34,7 +34,7 @@ export default function SearchBar() {
   return (
     <div>
       <div
-        className="flex flex-row px-4 py-4 rounded-lg mt-4 mx-4"
+        className="flex flex-row px-4 py-4 rounded-lg mt-2 mx-4 "
         style={{ backgroundColor: colors.searchBarBg }}
       >
         <input

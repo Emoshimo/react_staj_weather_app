@@ -69,7 +69,7 @@ export default function WeatherPage() {
 
   return (
     <div
-      className="mt-0 my-0 flex flex-col justify-start"
+      className="my-0 flex flex-col justify-start items-start"
       style={{
         height: "100%",
         overflow: "hidden",
@@ -77,21 +77,22 @@ export default function WeatherPage() {
       }}
     >
       <div
-        className="flex flex-col lg:grid lg:grid-cols-3 lg:gap-4 items-start"
+        className="flex flex-col items-center"
         style={{
           minHeight: "100vh",
           overflow: "hidden",
           backgroundColor: colors.background,
         }}
       >
-        <div className="col-span-3">
+        <div>
           <Header />
           <SearchBar />
         </div>
-        <WeatherDetail values={dailyWeatherValues} />
-        <WeatherHeader city={selectedCity} values={headerValues} />
-
-        <WeeklyForecast values={weeklyWeather} />
+        <div className="grid grid-cols-3 gap-4 mt-4 items-start">
+          <WeatherDetail values={dailyWeatherValues} />
+          <WeatherHeader city={selectedCity} values={headerValues} />
+          <WeeklyForecast values={weeklyWeather} />
+        </div>
       </div>
     </div>
   );

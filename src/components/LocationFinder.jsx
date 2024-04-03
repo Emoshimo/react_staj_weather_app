@@ -1,10 +1,24 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const LocationFinder = ({ onSelect }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  const notifyError = (message) => {
+    toast.error(message, {
+      position: "bottom-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
   const getLocation = () => {
     setLoading(true);
     setError(null);
@@ -15,12 +29,13 @@ const LocationFinder = ({ onSelect }) => {
           fetchLocationData(latitude, longitude);
         },
         (error) => {
-          setError("Error getting location. Please try again.");
+          notifyError("Please Allow Application to Access Your Location!");
           setLoading(false);
         }
       );
     } else {
-      setError("Geolocation is not supported by this browser.");
+      notifyError("Geolocation is not supported by this browser.");
+
       setLoading(false);
     }
   };
@@ -37,7 +52,7 @@ const LocationFinder = ({ onSelect }) => {
         setLoading(false);
       })
       .catch((error) => {
-        setError("Error fetching location data. Please try again.");
+        notifyError("Error fetching location data. Please try again.");
         setLoading(false);
       });
   };
@@ -49,6 +64,7 @@ const LocationFinder = ({ onSelect }) => {
           <FontAwesomeIcon color="gray" icon={faLocationDot} />
         </span>
       </button>
+      <ToastContainer />
       {error && <div>{error}</div>}
     </div>
   );
