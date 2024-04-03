@@ -5,7 +5,7 @@ const useCityData = (cityName) => {
   const apiKey = "a6105d7b44e05a8f176b5c8ecb438776";
   const [cityResult, setCityResult] = useState(null);
   const [loading, setLoading] = useState(false);
-  const geocodingApiUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=2&appid=${apiKey}`;
+  const geocodingApiUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=2&appid=${apiKey}`;
 
   useEffect(() => {
     const fetchCityData = async () => {
