@@ -21,7 +21,7 @@
     "react-toastify": "^10.0.5",
     "web-vitals": "^2.1.4"
   },
-  "homepage": "https://emoshimo.github.io/iweather",
+  "homepage": "https://emoshimo.github.io/react_staj_weather_app",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
