@@ -30,6 +30,8 @@ export default function WeatherPage() {
     description: "",
   });
   const [tempChangeData, setTempChangeData] = useState();
+  const [humidityChangeData, setHumidityChangeData] = useState();
+
   const apiKey = "a6105d7b44e05a8f176b5c8ecb438776";
 
   useEffect(() => {
@@ -41,7 +43,7 @@ export default function WeatherPage() {
         );
         setWeatherData(response.data);
         const { list } = response.data;
-
+        console.log(list);
         const {
           main: { feels_like, humidity },
           wind: { speed },
@@ -67,17 +69,27 @@ export default function WeatherPage() {
           const item = list[index];
           const date = new Date(item.dt_txt);
           const day = date.getDate();
-          const month = date.getMonth() + 1; // Months are zero-indexed, so add 1
+          const month = date.getMonth() + 1;
 
           return {
-            temperature: parseInt(item.main.temp),
+            value: parseInt(item.main.temp),
             date: `${day}/${month}`,
           };
         });
         setTempChangeData(formattedData);
-        console.log(formattedData);
+        const formattedHumidityData = indices.map((index) => {
+          const item = list[index];
+          const date = new Date(item.dt_txt);
+          const day = date.getDate();
+          const month = date.getMonth() + 1;
 
+          return {
+            value: parseInt(item.main.humidity),
+            date: `${day}/${month}`,
+          };
+        });
         setWeeklyWeather(weeklyData);
+        setHumidityChangeData(formattedHumidityData);
         setLoading(false);
       } catch (error) {
         setError(error);
@@ -125,7 +137,7 @@ export default function WeatherPage() {
             <TempChart data={tempChangeData} label={"Temperature"} />
           </div>
           <div className="lg:col-span-1">
-            <TempChart data={tempChangeData} />
+            <TempChart data={humidityChangeData} label={"Humidity"} />
           </div>
           <div className="lg:col-span-1">
             <TempChart data={tempChangeData} />

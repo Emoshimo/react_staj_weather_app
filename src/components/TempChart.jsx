@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import { Line } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -31,7 +31,7 @@ const TempChart = ({ data, label }) => {
     datasets: [
       {
         label: label,
-        data: data.map((entry) => entry.temperature),
+        data: data.map((entry) => entry.value),
         borderColor: colors.chartColor,
         backgroundColor: "rgba(75, 192, 192, 0.2)",
         borderWidth: 1,
