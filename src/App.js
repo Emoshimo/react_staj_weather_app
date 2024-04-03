@@ -5,13 +5,10 @@ import WeatherPage from "./pages/WeatherPage";
 
 function App() {
   return (
-    <BrowserRouter basename="https://emoshimo.github.io/react_staj_weather_app/">
+    <BrowserRouter>
       <Routes>
-        <Route path="/react_staj_weather_app" element={<MainPage />} />
-        <Route
-          path={`/react_staj_weather_app/weather/:city`}
-          element={<WeatherPage />}
-        />
+        <Route path="/" element={<MainPage />} />
+        <Route path={`/weather/:city`} element={<WeatherPage />} />
       </Routes>
     </BrowserRouter>
   );
