@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 const LocationFinder = ({ onSelect }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -43,7 +45,9 @@ const LocationFinder = ({ onSelect }) => {
   return (
     <div>
       <button onClick={getLocation} disabled={loading}>
-        {loading ? "Fetching Location..." : "Get Location"}
+        <span>
+          <FontAwesomeIcon color="gray" icon={faLocationDot} />
+        </span>
       </button>
       {error && <div>{error}</div>}
     </div>

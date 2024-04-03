@@ -34,12 +34,12 @@ export default function SearchBar() {
   return (
     <div>
       <div
-        className="search-container px-4 py-2 rounded-lg mt-4 mx-4"
+        className="flex flex-row px-4 py-4 rounded-lg mt-4 mx-4"
         style={{ backgroundColor: colors.searchBarBg }}
       >
         <input
           type="text"
-          className="search-input lg:w-96 px-2 py-2 rounded bg-transparent focus:outline-none text-gray-100 focus:text-gray-100 placeholder-gray-400 focus:placeholder-gray-400"
+          className="search-input lg:w-96 rounded bg-transparent focus:outline-none text-gray-100 focus:text-gray-100 placeholder-gray-400 focus:placeholder-gray-400"
           placeholder="Search location"
           value={search}
           onChange={handleSearchChange}
