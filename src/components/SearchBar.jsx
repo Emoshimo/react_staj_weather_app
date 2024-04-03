@@ -48,16 +48,23 @@ export default function SearchBar() {
 
         {loading && (
           <div className="absolute top-1/2 right-4 transform -translate-y-1/2">
-            {/* Loading spinner */}
             <div className="spinner-border text-white" role="status">
               <span className="sr-only">Loading...</span>
             </div>
           </div>
         )}
       </div>
+      {search.length > 8 && cityResult.length === 0 && (
+        <div
+          className="mt-2 text-red-500 rounded-lg"
+          style={{ backgroundColor: colors.searchResultBg }}
+        >
+          <p className="p-4 px-6">City Not Found</p>
+        </div>
+      )}
       {cityResult && !selectedCity && search.length > 0 && (
         <div
-          className="search-results mt-2 rounded-lg"
+          className="mt-2 rounded-lg"
           style={{ backgroundColor: colors.searchResultBg }}
         >
           {cityResult.map((city, index) => (
