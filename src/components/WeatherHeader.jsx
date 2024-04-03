@@ -13,7 +13,7 @@ export default function WeatherHeader({ city, values }) {
     "shower rain": "rain",
     rain: "rain",
     thunderstorm: "storm",
-    snow: "snow",
+    snow: "clouds",
     mist: "clouds",
   };
   const icon = iconMap[values.description.toLowerCase()] || "clouds";

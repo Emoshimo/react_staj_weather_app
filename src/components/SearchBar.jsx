@@ -54,14 +54,7 @@ export default function SearchBar() {
           </div>
         )}
       </div>
-      {search.length > 8 && cityResult.length === 0 && (
-        <div
-          className="mt-2 text-red-500 rounded-lg"
-          style={{ backgroundColor: colors.searchResultBg }}
-        >
-          <p className="p-4 px-6">City Not Found</p>
-        </div>
-      )}
+
       {cityResult && !selectedCity && search.length > 0 && (
         <div
           className="mt-2 rounded-lg"
@@ -70,7 +63,7 @@ export default function SearchBar() {
           {cityResult.map((city, index) => (
             <div
               key={city.id}
-              className="cursor-pointer"
+              className="cursor-pointer relative"
               onClick={() => handleCitySelect(city)}
             >
               <p className="p-4 px-6" style={{ color: colors.white2 }}>

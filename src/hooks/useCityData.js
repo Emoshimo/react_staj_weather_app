@@ -12,8 +12,9 @@ const useCityData = (cityName) => {
       setLoading(true);
       try {
         const response = await axios.get(geocodingApiUrl);
-        setCityResult(response.data);
-        console.log(response.data);
+        const data = response.data;
+        setCityResult(data);
+        console.log(data);
       } catch (error) {
         console.error("Error fetching city data:", error);
       }
@@ -22,6 +23,9 @@ const useCityData = (cityName) => {
 
     if (cityName) {
       fetchCityData();
+    } else {
+      // Clear cityResult when cityName is empty
+      setCityResult(null);
     }
   }, [cityName, geocodingApiUrl]);
 

@@ -88,10 +88,16 @@ export default function WeatherPage() {
           <Header />
           <SearchBar />
         </div>
-        <div className="grid grid-cols-3 gap-4 mt-4 items-start">
-          <WeatherDetail values={dailyWeatherValues} />
-          <WeatherHeader city={selectedCity} values={headerValues} />
-          <WeeklyForecast values={weeklyWeather} />
+        <div className="grid grid-cols-1 gap-4 mt-16 items-start lg:grid-cols-3">
+          <div className="lg:col-span-1">
+            <WeatherDetail values={dailyWeatherValues} />
+          </div>
+          <div className="lg:col-span-1">
+            <WeatherHeader city={selectedCity} values={headerValues} />
+          </div>
+          <div className="lg:col-span-1">
+            <WeeklyForecast values={weeklyWeather} />
+          </div>
         </div>
       </div>
     </div>
