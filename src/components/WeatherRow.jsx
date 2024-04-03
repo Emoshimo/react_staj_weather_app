@@ -9,7 +9,11 @@ export default function WeatherRow({ iconPath, label, value }) {
           {label}
         </span>
       </div>
-      <span className="text-lg text-white">{value}</span>
+      <span className="text-lg text-white">
+        {value} {label === "Wind speed" && " Km/h"}
+        {label === "Thermal sensation" && " °C"}
+        {label === "Air humidity" && " %"}
+      </span>
     </div>
   );
 }
