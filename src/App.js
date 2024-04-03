@@ -5,7 +5,7 @@ import WeatherPage from "./pages/WeatherPage";
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="react_staj_weather_app">
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path={`/weather/:city`} element={<WeatherPage />} />
