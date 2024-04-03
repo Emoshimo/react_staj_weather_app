@@ -3,7 +3,6 @@ import useCurrentDate from "../hooks/useCurrentDate";
 export default function WeatherHeader({ city, values }) {
   const { weekday, month, dayOfMonth, year, timeOfDay } = useCurrentDate();
   const [backgroundPath, setBackgroundPath] = useState("");
-  console.log(timeOfDay);
   const iconMap = {
     "clear sky": "clearsky",
     "few clouds": "fewclouds",
