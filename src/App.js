@@ -1,16 +1,16 @@
 import "./App.css";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import MainPage from "./pages/MainPage";
 import WeatherPage from "./pages/WeatherPage";
 
 function App() {
   return (
-    <BrowserRouter>
+    <Router>
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path={`/weather/:city`} element={<WeatherPage />} />
       </Routes>
-    </BrowserRouter>
+    </Router>
   );
 }
 
